@@ -2,8 +2,8 @@
 #include <vector>
 #include <string>
 #include <limits>
+#include <algorithm>
 #include "Main.h"
-
 #include <limits>
 using namespace std;
 
@@ -15,7 +15,9 @@ void displaySmallest(const vector<int> &numbers);
 void displayMean(const vector<int> &numbers);
 void displayLargest(const vector<int> &numbers);
 bool emptyChecker(const vector<int> &numbers);
-
+int searchForNumber(const vector<int> &numbers);
+void clearVector(vector<int> &numbers);
+bool checkForDuplicates(const vector<int> &numbers,int numToCheck);
 
 //prototypes above
 
@@ -45,11 +47,16 @@ int main() {
       case 'Q':
         cout << "Quitting\n";
         break;
+      case 'F':
+        searchForNumber(numbers);
+        break;
+      case 'C':
+        clearVector(numbers);
+        break;
       default:
         cout << "Unknown option, try again..." << endl;
       }
-  }while (choice != 'q');
-
+  }while (choice != 'Q');
 
   return 0;
 };
@@ -61,6 +68,8 @@ void displayMenu()
   cout << "M - Display mean of the numbers" << endl;
   cout << "S - Display the smallest number" << endl;
   cout << "L - Display the largest number" << endl;
+  cout << "F - Find a number" << endl;
+  cout << "C - Clear the vector" << endl;
   cout << "Q - Quit" << endl;
 }
 char handleInput() {
@@ -85,7 +94,11 @@ void addNumber(vector<int> &numbers) {
       cin.clear();
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cout << "Blad! To nie jest liczba. Spróbuj ponownie: ";
-    }; //dodac wszelkie zabezpieczenia
+    }
+  if (checkForDuplicates(numbers,choice)) {
+    cout << "Liczba juz jest na liście - " << choice << endl;
+    return;
+  }
   numbers.push_back(choice);
   cout << "Wpisales: " << choice << endl;
 }
@@ -122,5 +135,36 @@ bool emptyChecker(const vector<int> &numbers) {
   }
   return false;
 }
+
+int searchForNumber(const vector<int> &numbers) {
+  int choice;
+  while (!(cin >> choice))
+  {
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cout << "Blad! To nie jest liczba. Spróbuj ponownie: ";
+  }
+  int result = count(numbers.begin(),numbers.end(),choice);
+  if (result > 0) {
+    cout << "Liczba " << choice << " wystepuje " << result << endl;
+    return result;
+  }
+{
+    cout << "Liczby " << choice << " nie ma na liscie." << endl;
+    return 0;
+  }
+}
+
+void clearVector(vector<int> &numbers) {
+  numbers.clear();
+  cout << "Wektor został wyczyszczony" << endl;
+}
+
+bool checkForDuplicates(const vector<int> &numbers,int numToCheck) {
+  return find(numbers.begin(),numbers.end(),numToCheck) != numbers.end();
+  //jesli znajdzie to daje iterator na znalezione a jesli nie znajduje to daje
+  //automatycznie na koniec numbers
+}
+
 
 
