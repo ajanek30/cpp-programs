@@ -17,4 +17,7 @@ add_executable(SubstitutionCipher cpp-programs/SubstitutionCipher/Main.cpp
 # Target 2
 add_executable(VectorOperations cpp-programs/VectorOperations/Main.cpp
         pyramid.cpp)
-add_executable(MemoryManipulating cpp-programs/MemoryManipulating/Main.cpp)
+add_executable(MemoryManipulating cpp-programs/MemoryManipulating/Main.cpp
+        UserScoreManagement/Main.cpp
+        UserScoreManagement/Main.h)
+add_executable(UserScoreManagement cpp-programs/UserScoreManagement/Main.cpp)
