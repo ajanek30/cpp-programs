@@ -3,8 +3,8 @@
 
 using namespace std;
 
-void print(const int *arr_ptr,int size);
-int *apply_all(int *arr1_ptr, int size1, int *arr_ptr2,int size2);
+void print(const int *const arr_ptr,size_t size);
+int *apply_all(const int *arr1_ptr, size_t size1, const int *arr_ptr2,size_t size2);
 
 int main() {
 
@@ -20,7 +20,7 @@ int main() {
     return 0;
 
 }
-void print(const int *arr_ptr,int size)
+void print(const int *const arr_ptr,size_t size)
 {
     cout << "[ ";
     for (int i = 0 ; i < size ; i++) {
@@ -28,19 +28,16 @@ void print(const int *arr_ptr,int size)
     }
     cout << "]\n";
 }
-int *apply_all(int *arr1_ptr, int size1, int *arr_ptr2,int size2) {
+int *apply_all(const int *arr1_ptr, size_t size1, const int *arr_ptr2,size_t size2) {
     if (arr1_ptr == nullptr || arr_ptr2 == nullptr) {
-        return nullptr;
-    }
-    if (size1 <= 0 || size2 <= 0) {
         return nullptr;
     }
     int *results = nullptr;
     results = new int[size1*size2];
     int singleProduct = 1;
     int counter = 0;
-    for (int i = 0 ; i < size2 ; i++) {
-        for (int j = 0 ; j < size1 ; j++) {
+    for (size_t i = 0 ; i < size2 ; i++) {
+        for (size_t j = 0 ; j < size1 ; j++) {
             singleProduct = arr1_ptr[j] * arr_ptr2[i];
             results[counter] = singleProduct;
             counter++;
