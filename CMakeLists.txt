@@ -19,5 +19,8 @@ add_executable(VectorOperations cpp-programs/VectorOperations/Main.cpp
         pyramid.cpp)
 add_executable(MemoryManipulating cpp-programs/MemoryManipulating/Main.cpp
         UserScoreManagement/Main.cpp
-        UserScoreManagement/Main.h)
+        UserScoreManagement/Main.h
+        MergingRemovingDupliactesArray/Main.cpp
+        MergingRemovingDupliactesArray/Main.h)
 add_executable(UserScoreManagement cpp-programs/UserScoreManagement/Main.cpp)
+add_executable(MergingRemovingDupliactesArray cpp-programs/MergingRemovingDupliactesArray/Main.cpp)
