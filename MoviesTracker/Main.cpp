@@ -3,9 +3,16 @@
 //
 
 #include <iostream>
-#include "Movie.h"
+#include "Movies.h"
+void addMovies(Movies &movies,std::string name, std::string rating,int watchedCounter)
+{
+    movies.addMovie(name,rating,watchedCounter);
+}
 int main() {
-    Movie movie("hello","2",3);
+    Movies obj;
+    obj.display();
+    addMovies(obj,"Cinderella","4/10",5);
+    obj.display();
     return 0;
 }
 
