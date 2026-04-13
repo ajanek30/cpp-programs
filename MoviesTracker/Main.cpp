@@ -4,14 +4,13 @@
 
 #include <iostream>
 #include "Movies.h"
-void addMovies(Movies &movies,std::string name, std::string rating,int watchedCounter)
-{
-    movies.addMovie(name,rating,watchedCounter);
-}
+
 int main() {
     Movies obj;
     obj.display();
-    addMovies(obj,"Cinderella","4/10",5);
+    obj.addMovie("Cinderella","4/10",5);
+    obj.display();
+    obj.incrementWatchedCounter("Cinderella");
     obj.display();
     return 0;
 }

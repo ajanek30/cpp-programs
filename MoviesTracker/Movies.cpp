@@ -4,16 +4,25 @@
 
 #include "Movies.h"
 
-Movies::Movies() {
+
+void Movies::display() const {
+    for (const auto &movie: movies) {
+        std::cout << movie.getName() << " " << movie.getRating() << " " << movie.getWatchedCounter() << " " << std::endl;
+    }
 
 }
-void Movies::display() const {
-    for (auto movie: movies) {
-        std::cout << movie.getName() << movie.getRating() << movie.getWatchedCounter() << std::endl;
-    }
-}
-void Movies::addMovie(std::string name, std::string rating, int watchedCounter) {
+void Movies::addMovie(const std::string &name, std::string rating, int watchedCounter) {
     Movie movie(name,rating,watchedCounter);
     movies.push_back(movie);
 }
-Movies::~Movies(){}
+void Movies::incrementWatchedCounter(const std::string &name) {
+    for (auto &movie: movies) {
+        if (movie.getName() == name) {
+            movie.incrementWatchedCounter();
+        }
+        else {
+            std::cout << "No movie in the database" << std::endl;
+        }
+    }
+
+}

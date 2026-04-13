@@ -11,10 +11,11 @@ class Movies {
 private:
     std::vector<Movie> movies;
 public:
-    Movies();
+    Movies() = default;
     void display() const;
-    void addMovie(std::string name,std::string rating,int watchedCounter);
-    ~Movies();
+    void addMovie(const std::string &name,std::string rating,int watchedCounter);
+    void incrementWatchedCounter(const std::string &name);
+    ~Movies() = default;
 };
 
 

@@ -18,7 +18,8 @@ public:
     std::string getName() const;
     std::string getRating() const;
     int getWatchedCounter() const;
-    ~Movie();
+    void incrementWatchedCounter();
+    ~Movie() = default;
 };
 
 

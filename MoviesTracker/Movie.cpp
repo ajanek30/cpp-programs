@@ -6,7 +6,6 @@
 
 Movie::Movie(std::string name, std::string rating, int watchedCounter)
     : name(name), rating(rating), watchedCounter(watchedCounter){
-    std::cout << "Constructor executed";
 }
 std::string Movie::getName() const {
     return name;
@@ -17,6 +16,6 @@ std::string Movie::getRating() const {
 int Movie::getWatchedCounter() const {
     return watchedCounter;
 }
-Movie::~Movie() {
-    std::cout << "Destructor executed";
+void Movie::incrementWatchedCounter() {
+    watchedCounter++;
 }
