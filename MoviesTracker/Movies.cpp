@@ -6,6 +6,9 @@
 
 
 void Movies::display() const {
+    if (movies.size() == 0) {
+        std::cout << "No movies in the database" << std::endl;
+    }
     for (const auto &movie: movies) {
         std::cout << movie.getName() << " " << movie.getRating() << " " << movie.getWatchedCounter() << " " << std::endl;
     }
