@@ -13,7 +13,7 @@ private:
 public:
     Movies() = default;
     void display() const;
-    void addMovie(const std::string &name,std::string rating,int watchedCounter);
+    void addMovie(const std::string &name,const std::string &rating,int watchedCounter);
     void incrementWatchedCounter(const std::string &name);
     ~Movies() = default;
 };
