@@ -15,9 +15,10 @@ public:
     Movies(const Movies &source);
     Movies(Movies &&source) noexcept;
     void display() const;
-    void addMovie(const std::string &name,const std::string &rating,int watchedCounter);
+    std::vector<Movie>* addMovie(const std::string &name,const std::string &rating,int watchedCounter);
     void incrementWatchedCounter(const std::string &name);
-    ~Movies() = default;
+    ~Movies();
+
 };
 
 

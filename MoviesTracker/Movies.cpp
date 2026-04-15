@@ -7,6 +7,7 @@
 
 Movies::Movies(std::vector<Movie> data) {
     movies = new std::vector<Movie>();
+    *movies = data;
 }
 //copy deep
 Movies::Movies(const Movies &source) : Movies(*source.movies) {
@@ -14,7 +15,7 @@ Movies::Movies(const Movies &source) : Movies(*source.movies) {
 }
 //move constructor
 Movies::Movies(Movies &&source) noexcept : movies(source.movies) {
-    movies = nullptr;
+    source.movies = nullptr;
 }
 
 void Movies::display() const {
@@ -27,16 +28,15 @@ void Movies::display() const {
     }
 
 }
-Movies::addMovie(const std::string &name, const std::string &rating, int watchedCounter) {
+std::vector<Movie> *Movies::addMovie(const std::string &name, const std::string &rating, int watchedCounter) {
     for (const auto &movie : *movies) {
         if (movie.getName() == name) {
             std::cout << "Movie already in the database" << std::endl;
-            return;
+            return nullptr;
         }
     }
-    Movie movie(name,rating,watchedCounter);
-    movies->push_back(movie);
-    std::cout << movie.getName() << " added" << std::endl;
+    movies->emplace_back(name,rating,watchedCounter);
+    std::cout << name << " added" << std::endl;
     return movies;
 }
 void Movies::incrementWatchedCounter(const std::string &name) {
@@ -49,5 +49,10 @@ void Movies::incrementWatchedCounter(const std::string &name) {
         }
     std::cout << "No movie in the database" << std::endl;
     }
+Movies::~Movies() {
+    if (movies != nullptr) {
+        delete movies;
+    }
+}
 
 
