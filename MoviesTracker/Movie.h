@@ -15,6 +15,7 @@ private:
     int watchedCounter;
 public:
     Movie(std::string name, std::string rating, int watchedCounter);
+    Movie(const Movie &source);
     std::string getName() const;
     std::string getRating() const;
     int getWatchedCounter() const;

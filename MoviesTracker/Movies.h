@@ -9,9 +9,11 @@
 
 class Movies {
 private:
-    std::vector<Movie> movies;
+    std::vector<Movie> *movies;
 public:
-    Movies() = default;
+    Movies(std::vector<Movie> data);
+    Movies(const Movies &source);
+    Movies(Movies &&source) noexcept;
     void display() const;
     void addMovie(const std::string &name,const std::string &rating,int watchedCounter);
     void incrementWatchedCounter(const std::string &name);

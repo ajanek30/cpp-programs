@@ -7,6 +7,10 @@
 Movie::Movie(std::string name, std::string rating, int watchedCounter)
     : name(name), rating(rating), watchedCounter(watchedCounter){
 }
+Movie::Movie(const Movie &source) : name(source.name),rating(source.rating),watchedCounter(source.watchedCounter) {
+    std::cout << "Copy constructor" << std::endl;
+}
+
 std::string Movie::getName() const {
     return name;
 }
