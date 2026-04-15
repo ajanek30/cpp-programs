@@ -5,9 +5,12 @@
 #include <iostream>
 #include "Movies.h"
 
+
 int main() {
     std::vector<Movie> movies;
     Movies myMovies(movies);
+    //copy deep
+    Movies backup = myMovies;
 
     myMovies.addMovie("Cinderella","GP",4);
     myMovies.display();
@@ -17,6 +20,8 @@ int main() {
     myMovies.display();
     myMovies.addMovie("Cinderella","4/10",55);
     myMovies.display();
+
+
 
 
 

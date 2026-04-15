@@ -16,6 +16,7 @@ Movies::Movies(const Movies &source) : Movies(*source.movies) {
 //move constructor
 Movies::Movies(Movies &&source) noexcept : movies(source.movies) {
     source.movies = nullptr;
+    std::cout << "Move constructor" << std::endl;
 }
 
 void Movies::display() const {
