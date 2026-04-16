@@ -11,9 +11,13 @@ private:
     char *str;
 public:
     Mystring();
-    Mystring(const char *str);
-    Mystring(const char &source);
+    Mystring(const char *data);
+    Mystring(const Mystring &source);
+    Mystring &operator=(const Mystring &rhs);
     ~Mystring();
+    const char *getStr() const;
+    int getStrLength() const;
+    void display() const;
 
 };
 
