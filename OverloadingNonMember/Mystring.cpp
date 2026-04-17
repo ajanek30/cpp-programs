@@ -70,7 +70,82 @@ std::istream &operator>>(std::istream &is, Mystring &rhs) {
     rhs = Mystring(buff);
     return is;
 }
+bool operator==(const Mystring &lhs, const Mystring &rhs) {
+    return strcmp(lhs.str, rhs.str) == 0;
+}
+bool operator!=(const Mystring &lhs, const Mystring &rhs) {
+    return strcmp(lhs.str,rhs.str) != 0;
+}
+Mystring operator+(const Mystring &lhs, const Mystring &rhs) {
+    char *buff = new char[std::strlen(lhs.str) + std::strlen(rhs.str) + 1];
+    std::strcpy(buff, lhs.str);
+    std::strcat(buff, rhs.str);
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
+Mystring operator-(const Mystring &lhs) {
+    char *buff = new char[std::strlen(lhs.str) + std::strlen(lhs.str) + 1];
+    size_t len = std::strlen(lhs.str);
+    std::strcpy(buff, lhs.str);
+    for (size_t i = 0 ; i < len ; i++) {
+        buff[i] = std::tolower(buff[i]);
+    }
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
+Mystring &operator+=(Mystring &lhs,const Mystring &rhs){
+    lhs = lhs + rhs;
+    return lhs;
+}
+Mystring operator*(const Mystring &lhs, int n) {
+    if (n <= 0) return Mystring{};
+    char *buff = new char[(std::strlen(lhs.str)) * n + 1];
+    std::strcpy(buff, lhs.str);
+    size_t len = std::strlen(lhs.str);
+    for (size_t i = 1 ; i < n ; i++) {
+        std::strcat(buff, lhs.str);
+    }
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
 
+Mystring &operator*=(Mystring &lhs,int n) {
+    lhs = lhs * n;
+    return lhs;
+}
+bool operator<(const Mystring &lhs, const Mystring &rhs) {
+    return strcmp(lhs.str, rhs.str) < 0;
+}
+bool operator>(const Mystring &lhs, const Mystring &rhs) {
+    return strcmp(lhs.str, rhs.str) > 0;
+}
+Mystring &operator++(Mystring &lhs) {
+    size_t len = std::strlen(lhs.str);
+    for (size_t i = 0 ; i < len ; i++) {
+        lhs.str[i] = std::toupper(lhs.str[i]);
+    }
+    return lhs;
+}
+Mystring &operator--(Mystring &lhs) {
+    size_t len = std::strlen(lhs.str);
+    for (size_t i = 0 ; i < len ; i++) {
+        lhs.str[i] = std::tolower(lhs.str[i]);
+    }
+    return lhs;
+}
+Mystring operator++(Mystring &lhs,int) {
+    Mystring temp{lhs};
+    operator++(lhs);
+    return temp;
+}
+Mystring operator--(Mystring &lhs,int) {
+    Mystring temp{lhs};
+    operator--(lhs);
+    return temp;
+}
 //getters setters
 const char *Mystring::getStr() const{
     return str;

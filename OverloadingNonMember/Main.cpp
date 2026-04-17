@@ -12,28 +12,28 @@ int main() {
 
     Mystring adam{"adam"};
     Mystring piotr{"Piotr"};
-    cout << (adam == piotr) << endl; // == operator
-
+    cout << ("Piotr" == piotr) << endl; // == operator
+    //
     Mystring piotrus = -piotr; // -(make lowercase) operator
     cout << piotrus << endl;
-
+    //
     Mystring slowo{"slowo"};
-
-    cout << slowo + " i kolejne" << endl; // + (concatenation operator)
+    //
+    cout << "kolejne " + slowo << endl; // + (concatenation operator)
     cout << "fiutek " << slowo << endl;
-
+    //
     cout << (adam != piotr) << endl; // != operator
-
+    //
     cout << (adam < piotr) << endl; // <operator
     cout << (adam > piotr) << endl; // >operator
-
+    //
     cout << (adam+=piotr) << endl; // += operator
-
-    cout << "* operator: " << (adam*0) << endl; // * operator
+    //
+    cout << "* operator: " << (adam*4) << endl; // * operator
     cout << "original adam: " << adam << endl;
     adam*=3;
     cout <<" *= operator applied: " <<  adam << endl;
-
+    //
     cout << (++adam) << endl; // pre-increment
     cout << (adam++) << endl; // post-increment
     cout << (--adam) << endl; // pre-decrement

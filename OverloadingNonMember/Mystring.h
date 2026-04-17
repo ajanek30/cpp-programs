@@ -10,6 +10,19 @@
 class Mystring {
     friend std::ostream &operator<<(std::ostream &os, const Mystring &rhs);
     friend std::istream &operator>>(std::istream &is, Mystring &rhs);
+    friend bool operator==(const Mystring &lhs, const Mystring &rhs);
+    friend bool operator!=(const Mystring &lhs, const Mystring &rhs);
+    friend Mystring operator+(const Mystring &lhs, const Mystring &rhs);
+    friend Mystring operator-(const Mystring &lhs);
+    friend Mystring &operator+=(Mystring &lhs,Mystring &rhs);
+    friend Mystring &operator*=(Mystring &lhs,int n);
+    friend Mystring operator*(const Mystring &lhs,int n);
+    friend bool operator<(const Mystring &lhs, const Mystring &rhs);
+    friend bool operator>(const Mystring &lhs, const Mystring &rhs);
+    friend Mystring &operator++(Mystring &lhs);
+    friend Mystring &operator--(Mystring &lhs);
+    friend Mystring operator++(Mystring &lhs,int);
+    friend Mystring operator--(Mystring &lhs,int);
     //FRIEND overloading just THERE
 private:
     char *str;

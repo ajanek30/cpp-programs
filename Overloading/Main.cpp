@@ -20,6 +20,7 @@ int main() {
     Mystring slowo{"slowo"};
 
     cout << slowo + " i kolejne" << endl; // + (concatenation operator)
+    //cout << "kolejne " + slowo << endl;// + concatenation not working w/o friend non-member
     cout << "fiutek " << slowo << endl;
 
     cout << (adam != piotr) << endl; // != operator
