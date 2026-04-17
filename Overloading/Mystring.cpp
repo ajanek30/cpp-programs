@@ -8,6 +8,7 @@ Mystring::Mystring() : str{nullptr}{
     str = new char[1];
     *str = '\0';
 }
+
 Mystring::Mystring(const char *data) : str{nullptr} {
     if (data == nullptr) {
         str = new char[1];
@@ -18,6 +19,7 @@ Mystring::Mystring(const char *data) : str{nullptr} {
     }
 
 }
+
 //deep copy constructor
 Mystring::Mystring(const Mystring &source) : str{nullptr}{
 
@@ -25,11 +27,13 @@ Mystring::Mystring(const Mystring &source) : str{nullptr}{
     strcpy(str, source.str);
     std::cout << "Copy deep" << std::endl;
 }
+
 //deep move constructor
 Mystring::Mystring(Mystring &&source) : str(source.str) {
     source.str = nullptr;
     std::cout << "Move deep" << std::endl;
 }
+
 //copy assignment operator
 Mystring &Mystring::operator=(const Mystring &rhs) {
     if (this == &rhs) {
@@ -40,6 +44,7 @@ Mystring &Mystring::operator=(const Mystring &rhs) {
     std::strcpy(str, rhs.str);
     return *this;
 }
+
 //move assignment operator
 Mystring &Mystring::operator=(Mystring &&rhs) {
     if (this == &rhs) {
@@ -50,31 +55,21 @@ Mystring &Mystring::operator=(Mystring &&rhs) {
     rhs.str = nullptr;
     return *this;
 }
-//equality overload operator
-bool Mystring::operator==(const Mystring &rhs) const {
-    return strcmp(this->str,rhs.str) == 0;
+
+//output operator overloaded
+std::ostream &operator<<(std::ostream &os, const Mystring &rhs) {
+    os << rhs.str;
+    return os;
 }
-//make lowercase operator
-Mystring Mystring::operator-() const {
-    char *buff = new char[strlen(str) + 1];
-    std::strcpy(buff, str);
-    for (size_t i = 0 ; i < strlen(buff) ; i++) {
-        buff[i] = std::tolower(buff[i]);
-    }
-    Mystring temp{buff};
-    delete[] buff;
-    return temp;
-}
-//concatenate operator
-Mystring Mystring::operator+(const Mystring &rhs) const {
-    char *buff = new char[strlen(str) + strlen(rhs.str) + 1];
-    std::strcpy(buff, str);
-    std::strcat(buff, rhs.str);
-    Mystring temp{buff};
-    delete[] buff;
-    return temp;
+//input operator overloaded
+std::istream &operator>>(std::istream &is, Mystring &rhs) {
+    char buff[1000];
+    is >> buff;
+    rhs = Mystring(buff);
+    return is;
 }
 
+//getters setters
 const char *Mystring::getStr() const{
     return str;
 }
@@ -87,6 +82,7 @@ void Mystring::display() const {
     }
 }
 
+//destructor
 Mystring::~Mystring() {
     if(str != nullptr) {
         delete[] str;

@@ -4,22 +4,31 @@
 
 #ifndef CPP_PROGRAMS_MYSTRING_H
 #define CPP_PROGRAMS_MYSTRING_H
+#include <iostream>
 
 
 class Mystring {
+
+
+    friend std::ostream &operator<<(std::ostream &os, const Mystring &rhs);
+    friend std::istream &operator>>(std::istream &is, Mystring &rhs);
 private:
     char *str;
 public:
     Mystring();
     Mystring(const char *data);
-    Mystring(const Mystring &source);
-    Mystring(Mystring &&source);
-    Mystring &operator=(const Mystring &rhs);
-    Mystring &operator=(Mystring &&rhs);
-    bool operator==(const Mystring &rhs) const;
-    Mystring operator-() const;
-    Mystring operator+(const Mystring &rhs) const;
     ~Mystring();
+
+    Mystring(const Mystring &source); //copy constructor
+    Mystring(Mystring &&source); //move constructor
+
+    Mystring &operator=(const Mystring &rhs); //copy assignment
+    Mystring &operator=(Mystring &&rhs); //move assignment
+
+    //overloading to do
+    // -, ==, !=, <, >, +, +=, *, *=, ++(pre-inremenet),++(post-increment),--(pre),--(post)
+
+
     const char *getStr() const;
     int getStrLength() const;
     void display() const;
