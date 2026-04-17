@@ -34,8 +34,12 @@ public:
     bool operator>(const Mystring &rhs) const; // > operator
     bool operator<(const Mystring &rhs) const; // < operator
     Mystring &operator+=(const Mystring &rhs); // += operator
-    Mystring &operator*=(int n); // *= operator
-    Mystring operator*(int n); // *operator
+    Mystring &operator*=(const int n); // *= operator
+    Mystring operator*(const int n) const; // *operator
+    Mystring &operator++();
+    Mystring &operator--();
+    Mystring operator++(int);
+    Mystring operator--(int);
 
 
     const char *getStr() const;

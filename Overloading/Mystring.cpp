@@ -81,7 +81,8 @@ bool Mystring::operator!=(const Mystring &rhs) const {
 Mystring Mystring::operator-() const { //const tu mowi ze nie mozemy w tej funkcji ruszyc pol klasy w ktorej jestesmy
     char *buff = new char[strlen(str)+1];
     std::strcpy(buff, str);
-    for (size_t i = 0 ; i < strlen(buff) ; i++) {
+    size_t len = strlen(buff);
+    for (size_t i = 0 ; i < len ; i++) {
         buff[i] = std::tolower(buff[i]);
     }
     Mystring temp{buff};
@@ -102,15 +103,16 @@ bool Mystring::operator>(const Mystring &rhs) const {
 bool Mystring::operator<(const Mystring &rhs) const {
     return strcmp(this->str, rhs.str) < 0;
 }
-Mystring &Mystring::operator+=(const Mystring &rhs) {
+Mystring &Mystring::operator+=(const Mystring &rhs){
     *this = *this + rhs;
     return *this;
 }
-Mystring &Mystring::operator*=(int n) {
+Mystring &Mystring::operator*=(const int n) {
     *this = *this * n;
     return *this;
 }
-Mystring Mystring::operator*(int n)  {
+Mystring Mystring::operator*(const int n) const  {
+    if (n <= 0) return " ";
     char *buff = new char[(std::strlen(str))*n + 1];
     std::strcpy(buff, str);
     for (size_t i = 1 ; i < n ; i++) {
@@ -118,6 +120,30 @@ Mystring Mystring::operator*(int n)  {
     }
     Mystring temp{buff};
     delete[] buff;
+    return temp;
+}
+Mystring &Mystring::operator++(){
+    size_t len = strlen(str);
+    for (size_t i = 0 ; i < len ; i++) {
+        str[i] = std::toupper(str[i]);
+    }
+    return *this;
+}
+Mystring Mystring::operator++(int) {
+    Mystring temp{*this};
+    operator++();
+    return temp;
+}
+Mystring &Mystring::operator--() {
+    size_t len = strlen(str);
+    for (size_t i = 0 ; i < len ; i++) {
+        str[i] = std::tolower(str[i]);
+    }
+    return *this;
+}
+Mystring Mystring::operator--(int) {
+    Mystring temp{*this};
+    operator--();
     return temp;
 }
 

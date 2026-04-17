@@ -29,10 +29,15 @@ int main() {
 
     cout << (adam+=piotr) << endl; // += operator
 
-    cout << "* operator: " << (adam*3) << endl; // * operator
+    cout << "* operator: " << (adam*0) << endl; // * operator
     cout << "original adam: " << adam << endl;
     adam*=3;
     cout <<" *= operator applied: " <<  adam << endl;
+
+    cout << (++adam) << endl; // pre-increment
+    cout << (adam++) << endl; // post-increment
+    cout << (--adam) << endl; // pre-decrement
+    cout << (adam--) << endl; // post-decrement
 
     return 0;
 };
