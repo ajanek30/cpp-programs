@@ -17,6 +17,18 @@ int main() {
     Mystring obj;
     obj = obj2;
     obj.display();
+    ////
+    Mystring antek{"Antek"};
+    Mystring kuba{"kuba"};
+    std::cout << std::boolalpha;
+    std::cout << (antek == kuba) << std::endl;
+    ////
+    Mystring antek2 = -antek;
+    antek2.display();
+    ///
+    Mystring piotrek{"piotrek"};
+    Mystring zdanie = piotrek + " to człowiek";
+    zdanie.display();
 
     return 0;
 };

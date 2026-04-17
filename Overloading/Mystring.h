@@ -13,7 +13,12 @@ public:
     Mystring();
     Mystring(const char *data);
     Mystring(const Mystring &source);
+    Mystring(Mystring &&source);
     Mystring &operator=(const Mystring &rhs);
+    Mystring &operator=(Mystring &&rhs);
+    bool operator==(const Mystring &rhs) const;
+    Mystring operator-() const;
+    Mystring operator+(const Mystring &rhs) const;
     ~Mystring();
     const char *getStr() const;
     int getStrLength() const;
