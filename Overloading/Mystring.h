@@ -26,7 +26,16 @@ public:
     Mystring &operator=(Mystring &&rhs); //move assignment
 
     //overloading to do
-    // -, ==, !=, <, >, +, +=, *, *=, ++(pre-inremenet),++(post-increment),--(pre),--(post)
+    // ++(pre-inremenet),++(post-increment),--(pre),--(post)
+    bool operator==(const Mystring &rhs) const; // == operator
+    Mystring operator-() const ; // -(make lowercase) operator
+    Mystring operator+(const Mystring &rhs) const; // +(concatenate) operator
+    bool operator!=(const Mystring &rhs) const; // != operator
+    bool operator>(const Mystring &rhs) const; // > operator
+    bool operator<(const Mystring &rhs) const; // < operator
+    Mystring &operator+=(const Mystring &rhs); // += operator
+    Mystring &operator*=(int n); // *= operator
+    Mystring operator*(int n); // *operator
 
 
     const char *getStr() const;

@@ -39,6 +39,7 @@ Mystring &Mystring::operator=(const Mystring &rhs) {
     if (this == &rhs) {
         return *this;
     }
+    std::cout << "Copy assignment" << std::endl;
     delete[] this->str;
     str = new char[std::strlen(rhs.str) + 1];
     std::strcpy(str, rhs.str);
@@ -50,6 +51,7 @@ Mystring &Mystring::operator=(Mystring &&rhs) {
     if (this == &rhs) {
         return *this;
     }
+    std::cout << "move assignment" << std::endl;
     delete[] this->str;
     str = rhs.str;
     rhs.str = nullptr;
@@ -68,6 +70,58 @@ std::istream &operator>>(std::istream &is, Mystring &rhs) {
     rhs = Mystring(buff);
     return is;
 }
+//overloading JUST HERE
+
+bool Mystring::operator==(const Mystring &rhs) const {
+    return strcmp(this->str, rhs.str) == 0;
+}
+bool Mystring::operator!=(const Mystring &rhs) const {
+    return strcmp(this->str, rhs.str) != 0;
+}
+Mystring Mystring::operator-() const { //const tu mowi ze nie mozemy w tej funkcji ruszyc pol klasy w ktorej jestesmy
+    char *buff = new char[strlen(str)+1];
+    std::strcpy(buff, str);
+    for (size_t i = 0 ; i < strlen(buff) ; i++) {
+        buff[i] = std::tolower(buff[i]);
+    }
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
+Mystring Mystring::operator+(const Mystring &rhs) const{
+    char *buff = new char[strlen(str) + strlen(rhs.str) + 1];
+    std::strcpy(buff,str);
+    std::strcat(buff,rhs.str);
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
+bool Mystring::operator>(const Mystring &rhs) const {
+    return strcmp(this->str, rhs.str) > 0;
+}
+bool Mystring::operator<(const Mystring &rhs) const {
+    return strcmp(this->str, rhs.str) < 0;
+}
+Mystring &Mystring::operator+=(const Mystring &rhs) {
+    *this = *this + rhs;
+    return *this;
+}
+Mystring &Mystring::operator*=(int n) {
+    *this = *this * n;
+    return *this;
+}
+Mystring Mystring::operator*(int n)  {
+    char *buff = new char[(std::strlen(str))*n + 1];
+    std::strcpy(buff, str);
+    for (size_t i = 1 ; i < n ; i++) {
+        std::strcat(buff, str);
+    }
+    Mystring temp{buff};
+    delete[] buff;
+    return temp;
+}
+
+
 
 //getters setters
 const char *Mystring::getStr() const{

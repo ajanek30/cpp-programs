@@ -3,15 +3,36 @@
 //
 
 #include "Main.h"
-
 #include <cstring>
-
 #include "Mystring.h"
 #include <iostream>
-
+using namespace std;
 int main() {
+    //test cases to do
 
-//test cases to do
+    Mystring adam{"adam"};
+    Mystring piotr{"Piotr"};
+    cout << (adam == piotr) << endl; // == operator
+
+    Mystring piotrus = -piotr; // -(make lowercase) operator
+    cout << piotrus << endl;
+
+    Mystring slowo{"slowo"};
+
+    cout << slowo + " i kolejne" << endl; // + (concatenation operator)
+    cout << "fiutek " << slowo << endl;
+
+    cout << (adam != piotr) << endl; // != operator
+
+    cout << (adam < piotr) << endl; // <operator
+    cout << (adam > piotr) << endl; // >operator
+
+    cout << (adam+=piotr) << endl; // += operator
+
+    cout << "* operator: " << (adam*3) << endl; // * operator
+    cout << "original adam: " << adam << endl;
+    adam*=3;
+    cout <<" *= operator applied: " <<  adam << endl;
 
     return 0;
 };
