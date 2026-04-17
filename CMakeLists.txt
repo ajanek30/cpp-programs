@@ -15,7 +15,8 @@ add_executable(UserScoreManagement UserScoreManagement/Main.cpp)
 
 add_executable(MergingRemovingDupliactesArray MergingRemovingDupliactesArray/Main.cpp)
 
-# Nasz docelowy program!
+
 add_executable(MoviesTracker MoviesTracker/Main.cpp MoviesTracker/Movie.cpp MoviesTracker/Movies.cpp)
 
 add_executable(Overloading Overloading/Main.cpp Overloading/Mystring.cpp)
+add_executable(OverloadingNonMember OverloadingNonMember/Main.cpp OverloadingNonMember/Mystring.cpp)

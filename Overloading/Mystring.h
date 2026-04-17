@@ -36,10 +36,10 @@ public:
     Mystring &operator+=(const Mystring &rhs); // += operator
     Mystring &operator*=(const int n); // *= operator
     Mystring operator*(const int n) const; // *operator
-    Mystring &operator++();
-    Mystring &operator--();
-    Mystring operator++(int);
-    Mystring operator--(int);
+    Mystring &operator++(); //++ uppercase operator
+    Mystring &operator--(); //-- lowercase operator
+    Mystring operator++(int); //post++ uppercase operator
+    Mystring operator--(int); //post-- lowercase operator
 
 
     const char *getStr() const;
