@@ -22,4 +22,6 @@ add_executable(Overloading Overloading/Main.cpp Overloading/Mystring.cpp)
 
 add_executable(OverloadingNonMember OverloadingNonMember/Main.cpp OverloadingNonMember/Mystring.cpp)
 
-add_executable(BankingManagementInheritance BankingManagementInheritance/main.cpp BankingManagementInheritance/Account.cpp BankingManagementInheritance/Account_Util.cpp BankingManagementInheritance/Savings_Account.cpp)
+add_executable(BankingManagementInheritance BankingManagementInheritance/main.cpp
+        BankingManagementInheritance/Account.cpp BankingManagementInheritance/Account_Util.cpp
+        BankingManagementInheritance/Savings_Account.cpp BankingManagementInheritance/CheckingAccount.cpp)
