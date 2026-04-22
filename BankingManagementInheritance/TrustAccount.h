@@ -21,9 +21,9 @@ protected:
     double depositBonus;
     size_t withdrawCounter;
 public:
-    TrustAccount(std::string name = def_name, double balance = def_balance, double int_rate = def_int_rate,double depositBonus = def_deposit_bonus);
+    TrustAccount(const std::string &name = def_name, double balance = def_balance, double int_rate = def_int_rate,double depositBonus = def_deposit_bonus);
     ~TrustAccount() = default;
-    bool withdraw20Checker(double amount);
+    bool withdraw20Checker(double amount) const;
     bool withdraw(double amount);
     bool deposit(double amount);
 };

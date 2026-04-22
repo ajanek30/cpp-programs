@@ -1,6 +1,6 @@
 #include "Account.h"
 
-Account::Account(std::string name, double balance) 
+Account::Account(const std::string &name, double balance)
     : name{name}, balance{balance} {
 }
 

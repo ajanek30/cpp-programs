@@ -10,12 +10,12 @@ std::ostream &operator<<(std::ostream &os, const TrustAccount& obj) {
     return os;
 }
 
-TrustAccount::TrustAccount(std::string name, double balance, double int_rate, double depositBonus)
+TrustAccount::TrustAccount(const std::string &name, double balance, double int_rate, double depositBonus)
     : Savings_Account(name, balance, int_rate), withdrawCounter(0), depositBonus(depositBonus){
     std::cout << "TrustAccount: constructor" << std::endl;
 }
 
-bool TrustAccount::withdraw20Checker(double amount) {
+bool TrustAccount::withdraw20Checker(double amount) const{
     return amount <= (0.2 * balance);
 }
 

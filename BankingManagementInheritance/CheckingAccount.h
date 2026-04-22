@@ -16,7 +16,7 @@ private:
 protected:
     double flatFee;
 public:
-    CheckingAccount(std::string name = def_name,double balance = def_balance, double flatFee = def_flatFee);
+    CheckingAccount(const std::string &name = def_name,double balance = def_balance, double flatFee = def_flatFee);
     bool withdraw(double amount);
     bool deposit(double amount);
     ~CheckingAccount() = default;

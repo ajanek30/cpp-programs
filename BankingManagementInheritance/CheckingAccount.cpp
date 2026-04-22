@@ -4,7 +4,7 @@
 
 #include "CheckingAccount.h"
 
-CheckingAccount::CheckingAccount(std::string name,double balance,double fee)
+CheckingAccount::CheckingAccount(const std::string &name,double balance,double fee)
     : Account(name,balance) , flatFee(fee){
     std::cout << "CheckingAccount constructor executed" << std::endl;
 }
